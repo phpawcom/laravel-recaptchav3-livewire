@@ -1,5 +1,5 @@
 {
-    "name": "josiasmontag/laravel-recaptchav3",
+    "name": "josiasmontag/laravel-recaptchav3-livewire",
     "description": "Recaptcha V3 for Laravel package",
     "keywords": [
         "captcha",

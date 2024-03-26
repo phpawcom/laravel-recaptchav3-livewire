@@ -117,7 +117,7 @@ class RecaptchaV3
     public function field($action, $name = 'g-recaptcha-response')
     {
         $fieldId = uniqid($name . '-', false);
-        $html = '<input type="hidden" name="' . $name . '" id="' . $fieldId . '">';
+        $html = '<input type="hidden" name="' . $name . '" id="' . $fieldId . '" wire:model.defer="'.$name.'">';
         $html .= "<script>
   grecaptcha.ready(function() {
       grecaptcha.execute('" . $this->sitekey . "', {action: '" . $action . "'}).then(function(token) {
