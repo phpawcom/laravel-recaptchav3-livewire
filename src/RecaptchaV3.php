@@ -128,16 +128,17 @@ class RecaptchaV3
   </script>";
         return $html;
     }
-    public function livewireJS($name){
+     public function livewireJS($name){
         return "<script>
-        var updateLivewireModel = function(element){
-            var parent = $('div[wire\\\:id]')
-             if(parent && parent.attr('wire:id') !== undefined){
-                var isDefer = element.attr('wire:model.defer') !== undefined;
-                window.livewire.find(parent.attr('wire:id')).set(isDefer? element.attr('wire:model.defer') : element.attr('wire:model'), element.val(), isDefer);
-            }
-        };
-        </script>";
+var updateLivewireModel = function(element){
+    var parent = $('div[wire\\\:id]')
+     if(parent && parent.attr('wire:id') !== undefined){
+        var isDefer = element.attr('wire:model.defer') !== undefined;
+        window.livewire.find(parent.attr('wire:id')).set(isDefer? element.attr('wire:model.defer') : element.attr('wire:model'), element.val(), isDefer);
+    }
+};
+</script>";
+    }
 
 
 }
