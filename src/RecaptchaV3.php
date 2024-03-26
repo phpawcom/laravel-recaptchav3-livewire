@@ -122,11 +122,22 @@ class RecaptchaV3
   grecaptcha.ready(function() {
       grecaptcha.execute('" . $this->sitekey . "', {action: '" . $action . "'}).then(function(token) {
          document.getElementById('" . $fieldId . "').value = token;
+         updateLivewireModel($('#".$fieldId."'));
       });
   });
   </script>";
         return $html;
     }
+    public function livewireJS($name){
+        return "<script>
+        var updateLivewireModel = function(element){
+            var parent = $('div[wire\\\:id]')
+             if(parent && parent.attr('wire:id') !== undefined){
+                var isDefer = element.attr('wire:model.defer') !== undefined;
+                window.livewire.find(parent.attr('wire:id')).set(isDefer? element.attr('wire:model.defer') : element.attr('wire:model'), element.val(), isDefer);
+            }
+        };
+        </script>";
 
 
 }
